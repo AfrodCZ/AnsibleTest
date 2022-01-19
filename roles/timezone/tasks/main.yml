@@ -1,0 +1,43 @@
+---
+- name: Nastavení časové zóny
+  timezone:
+    name: Europe/Prague
+
+- name: Instalace chrony
+  yum:
+    name: chrony
+    state: installed
+
+- name: Instalace ntpdate
+  yum:
+    name: ntpdate
+    state: installed
+
+#- name: Povolení chrony
+ # ansible.builtin.service:
+  #  name: chrony
+   # enabled: yes
+   # state: started
+
+- name: Instalace NTP
+  yum:
+    name: ntp
+    state: installed
+
+- name: Zastavení NTP
+  ansible.builtin.service:
+    name: ntpd
+    state: stopped
+
+- name: Přepsání NTP serveru
+  shell: ntpdate 0.pool.ntp.org
+
+- name: Nastartování služby NTP
+  ansible.builtin.service:
+    name: ntpd
+    state: started
+
+- name: Restart NTPD
+  ansible.builtin.service:
+    name: ntpd
+    state: restarted

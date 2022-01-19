@@ -1,0 +1,5 @@
+---
+- name: "Instalace Midnight Commanderu"
+  yum:
+    name: mc
+    state: present       #absent odinstaluje daný program

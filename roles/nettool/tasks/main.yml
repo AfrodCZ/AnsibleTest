@@ -1,0 +1,20 @@
+---
+- name: Instalace tcpdump
+  yum: 
+    name: tcpdump
+    state: present
+
+- name: Instalace net-tools
+  yum:
+    name: net-tools
+    state: present
+
+- name: Instalace networkmanager
+  yum:
+    name: NetworkManager
+    state: present
+
+- name: Vpnutí IPv6 v sysctl.conf
+  template:
+    src: sysctl.conf.j2
+    dest: /etc/sysctl.conf

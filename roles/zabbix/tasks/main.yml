@@ -1,0 +1,12 @@
+---
+- name: Instalace epel repozitáře
+  yum:
+    name: epel-release
+    state: present
+
+- name: Instalace zabbix agenta
+  yum:
+    name: zabbix-agent
+    state: present
+
+

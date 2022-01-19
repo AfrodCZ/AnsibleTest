@@ -1,0 +1,5 @@
+---
+- host: local
+  tasks:
+  - name: Instalace vim
+    yum: vim -y

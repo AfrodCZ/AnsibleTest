@@ -1,0 +1,24 @@
+---
+- hosts: local
+  roles:
+   - bind
+   - mc
+   - vim
+   - postfix
+   - timezone
+   - logrotate
+   - nettool
+   - ip
+   - zabbix
+  vars:
+    logrotate_scripts:
+      - name: syslog
+        path: /var/log/syslog/*.log
+        options:
+          - weekly
+          - size 25M
+          - rotate 7
+          - missingok
+          - compress
+          - delaycompress
+          - copytruncate

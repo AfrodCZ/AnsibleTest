@@ -1,0 +1,25 @@
+---
+- name: Apache2 instalace
+  yum:
+    name: httpd
+    state: present
+
+- name: Kopírování conf souboru do apache
+  ansible.builtin.template:
+    src: welcome.conf.j2
+    dest: /etc/httpd/conf.d/welcome.conf
+    owner: root
+    group: root
+    mode: '0644'
+
+- name: Kopírování dat do /var/www
+  ansible.builtin.template:
+    src: web.j2
+    dest: /var/www/html/index.html
+    owner: root
+    group: root
+
+- name: Restart Apache
+  ansible.builtin.service:
+    name: httpd
+    state: restarted

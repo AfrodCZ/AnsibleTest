@@ -1,0 +1,6 @@
+---
+- name:Apache2 instalace
+  yum:
+    name:httpd
+    state:installed
+#zkontroluje zda je nainstalován Apache, když není nainstaluj, když ne OK

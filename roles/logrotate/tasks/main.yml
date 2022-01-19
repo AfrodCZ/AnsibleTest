@@ -1,0 +1,17 @@
+---
+- name: Instalace logrotate a kontrola, zda není nainstalováno
+  tags: logrotate
+  become: true
+  yum:
+    name: logrotate
+    state: present
+
+- name: Vytvoření konfigurace logrotate.conf 
+  tags: logrotate
+  become: true
+  template:
+    src: logrotate.conf.j2
+    dest: /etc/logrotate.conf
+    owner: root
+    group: root
+    mode: 0644

@@ -1,0 +1,5 @@
+---
+- name: VIM instalace
+  yum:
+    name: vim
+    state: removed

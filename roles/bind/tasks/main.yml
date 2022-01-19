@@ -1,0 +1,13 @@
+--- 
+- name: Instalace bind a bind utils 
+  ansible.builtin.yum:
+    name: 
+      - bind
+      - bind-utils
+    state: latest
+- name: Enable bind
+  ansible.builtin.service:
+    name: named
+    enabled: yes
+    state: started
+
